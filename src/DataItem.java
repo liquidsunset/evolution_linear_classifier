@@ -1,16 +1,16 @@
 /**
  * This Class holds one DataItem Object from the dataset. So it is one line in the Set
  */
-public class DataItem {
+class DataItem {
 
-    public enum DataSet {
-        IONOSPEHERE, DIGIT
+    enum DataSet {
+        IONOSPEHERE, DIGIT, REDWINE, WHITEWINE
     }
 
     private int itemClass;
     private double featureList[];
 
-    public DataItem(int itemClass, double featureList[]) {
+    DataItem(int itemClass, double featureList[]) {
         this.itemClass = itemClass;
         this.featureList = featureList;
     }

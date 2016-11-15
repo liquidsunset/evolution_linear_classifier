@@ -11,10 +11,12 @@ import java.util.Collections;
 /**
  * Class for importing the datasets and splitting into test and training data
  */
-public class DataImporter {
+class DataImporter {
 
     private static final String IONOSPHERE_DATA_PATH = "dataset/ionosphere/ionosphere.data.txt";
     private static final String DIGIT_DATA_PATH = "dataset/digit/semeion.data.txt";
+    private static final String RED_WINE_PATH = "dataset/winequality/winequality-red.csv";
+    private static final String WHITE_WINE_PATH = "dataset/winequality/winequality-white.csv";
 
     private ArrayList<DataItem> processedData = new ArrayList<>();
 
@@ -33,6 +35,12 @@ public class DataImporter {
             case DIGIT:
                 createDigitData();
                 break;
+            case REDWINE:
+                createWineData(RED_WINE_PATH);
+                break;
+            case WHITEWINE:
+                createWineData(WHITE_WINE_PATH);
+                break;
         }
 
         splitData();
@@ -48,14 +56,14 @@ public class DataImporter {
         ) {
             for (String line; (line = br.readLine()) != null; ) {
                 String[] splitLine = line.split(",");
+
                 String itemClassChar = splitLine[splitLine.length - 1];
+                int itemClass = "b".equals(itemClassChar) ? 0 : 1;
 
                 double[] features = new double[splitLine.length - 1];
                 for (int i = 0; i < splitLine.length - 2; i++) {
                     features[i] = Double.valueOf(splitLine[i]);
                 }
-
-                int itemClass = "b".equals(itemClassChar) ? 0 : 1;
 
                 processedData.add(new DataItem(itemClass, features));
 
@@ -91,6 +99,37 @@ public class DataImporter {
                 }
 
                 processedData.add(new DataItem(itemClass, features));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createWineData(String filePath) {
+        try (
+                InputStream fis = new FileInputStream(filePath);
+                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                BufferedReader br = new BufferedReader(isr)
+        ) {
+            for (String line; (line = br.readLine()) != null; ) {
+                String[] splitLine = line.split(";");
+
+
+                int itemClass;
+                try {
+                    itemClass = Integer.valueOf(splitLine[splitLine.length -1]);
+                } catch (NumberFormatException e) {
+                    continue;
+                }
+
+                double[] features = new double[splitLine.length - 1];
+                for (int i = 0; i < splitLine.length - 2; i++) {
+                    features[i] = Double.valueOf(splitLine[i]);
+                }
+
+                processedData.add(new DataItem(itemClass, features));
+
             }
 
         } catch (IOException e) {
