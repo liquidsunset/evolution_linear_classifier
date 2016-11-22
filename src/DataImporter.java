@@ -7,6 +7,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Class for importing the datasets and splitting into test and training data
@@ -26,6 +28,8 @@ class DataImporter {
     private ArrayList<DataItem> dataRandomSplitTraining = new ArrayList<>();
     private ArrayList<DataItem> dataRandomSplitTest = new ArrayList<>();
 
+    private int nClasses = 0;
+
 
     DataImporter(DataItem.DataSet dataSet) {
         switch (dataSet) {
@@ -44,6 +48,7 @@ class DataImporter {
         }
 
         splitData();
+        countClasses();
         System.out.println("Processed Datasets");
     }
 
@@ -118,7 +123,7 @@ class DataImporter {
 
                 int itemClass;
                 try {
-                    itemClass = Integer.valueOf(splitLine[splitLine.length -1]);
+                    itemClass = Integer.valueOf(splitLine[splitLine.length - 1]);
                 } catch (NumberFormatException e) {
                     continue;
                 }
@@ -150,6 +155,20 @@ class DataImporter {
                 0, shuffledList.size() / 2 + shuffledList.size() % 2));
         dataRandomSplitTest.addAll(shuffledList.subList(
                 shuffledList.size() / 2 + shuffledList.size() % 2, shuffledList.size()));
+    }
+
+    private void countClasses() {
+        Set<Integer> classCount = new HashSet<>();
+
+        for (DataItem dataItem : processedData) {
+            classCount.add(dataItem.getItemClass());
+        }
+
+        nClasses = classCount.size();
+    }
+
+    public int getnClasses() {
+        return nClasses;
     }
 
     public ArrayList<DataItem> getProcessedData() {
