@@ -29,6 +29,7 @@ class DataImporter {
     private ArrayList<DataItem> dataRandomSplitTest = new ArrayList<>();
 
     private int nClasses = 0;
+    private int nFeatures = 0;
 
 
     DataImporter(DataItem.DataSet dataSet) {
@@ -48,7 +49,7 @@ class DataImporter {
         }
 
         splitData();
-        countClasses();
+        initClassFeatureCount();
         System.out.println("Processed Datasets");
     }
 
@@ -157,7 +158,7 @@ class DataImporter {
                 shuffledList.size() / 2 + shuffledList.size() % 2, shuffledList.size()));
     }
 
-    private void countClasses() {
+    private void initClassFeatureCount() {
         Set<Integer> classCount = new HashSet<>();
 
         for (DataItem dataItem : processedData) {
@@ -165,10 +166,15 @@ class DataImporter {
         }
 
         nClasses = classCount.size();
+        nFeatures = processedData.get(0).getFeatureList().length;
     }
 
     public int getnClasses() {
         return nClasses;
+    }
+
+    public int getnFeatures() {
+        return nFeatures;
     }
 
     public ArrayList<DataItem> getProcessedData() {
