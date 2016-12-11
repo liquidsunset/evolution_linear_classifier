@@ -46,7 +46,7 @@ public class HyperPlanePhenotype implements Phenotype {
     @Override
     public void calcFitness() {
         calcFitnessWithHyperPlanes();
-        fitness = (double)nNotCorrect / (double)sampleCount;
+        fitness = (double)nCorrect / (double)sampleCount;
     }
 
     @Override

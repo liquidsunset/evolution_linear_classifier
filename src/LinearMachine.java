@@ -10,11 +10,11 @@ public class LinearMachine {
 
     public static void main(String[] args) {
 
-        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.DIGIT);
+        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.REDWINE);
 
 
         JEvolution EA = JEvolution.getInstance();
-        EA.setMaximization(false);
+        EA.setMaximization(true);
 
         RealChromosome chrom = new RealChromosome();
 
@@ -30,8 +30,8 @@ public class LinearMachine {
             EA.addChromosome(chrom);
             EA.setPhenotype(hyperPlanePhenotype);
 
-            EA.setPopulationSize(25, 50);
-            EA.setFitnessThreshold(0.0);
+            EA.setPopulationSize(20, 50);
+            EA.setFitnessThreshold(1.0);
 
 
             EA.setMaximalGenerations(100);
