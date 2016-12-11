@@ -1,11 +1,10 @@
+import java.util.ArrayList;
+
 /**
  * This Class holds one DataItem Object from the dataset. So it is one line in the Set
  */
 class DataItem {
 
-    enum DataSet {
-        IONOSPEHERE, DIGIT, REDWINE, WHITEWINE
-    }
 
     private int itemClass;
     private double featureList[];
@@ -22,4 +21,21 @@ class DataItem {
     public double[] getFeatureList() {
         return featureList;
     }
+
+    public double calcLinearDiscriminantFunction(ArrayList<Double> hyperPlaneVector) {
+
+        if(hyperPlaneVector.size() != featureList.length) {
+            throw new IndexOutOfBoundsException("Weight size must be the same as feature size");
+        }
+
+        double calculatedWeight = 0.0;
+
+        for(int i = 0; i < featureList.length; i++){
+            calculatedWeight += featureList[i] * hyperPlaneVector.get(i);
+        }
+
+        return calculatedWeight;
+    }
+
+
 }

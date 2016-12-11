@@ -15,6 +15,10 @@ import java.util.Set;
  */
 class DataImporter {
 
+    enum DataSet {
+        IONOSPEHERE, DIGIT, REDWINE, WHITEWINE
+    }
+
     private static final String IONOSPHERE_DATA_PATH = "dataset/ionosphere/ionosphere.data.txt";
     private static final String DIGIT_DATA_PATH = "dataset/digit/semeion.data.txt";
     private static final String RED_WINE_PATH = "dataset/winequality/winequality-red.csv";
@@ -32,7 +36,7 @@ class DataImporter {
     private int nFeatures = 0;
 
 
-    DataImporter(DataItem.DataSet dataSet) {
+    DataImporter(DataSet dataSet) {
         switch (dataSet) {
             case IONOSPEHERE:
                 createIonosphereData();
