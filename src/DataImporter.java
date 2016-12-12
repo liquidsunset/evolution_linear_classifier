@@ -204,18 +204,19 @@ class DataImporter {
     }
 
     private void splitData() {
-        dataHalfSplitTraining.addAll(processedData.subList(
-                0, processedData.size() / 2 + processedData.size() % 2));
-        dataHalfSplitTest.addAll(processedData.subList(
-                processedData.size() / 2 + processedData.size() % 2, processedData.size()));
 
         ArrayList<DataItem> shuffledList = new ArrayList<>(processedData);
         Collections.shuffle(shuffledList);
 
-        dataRandomSplitTraining.addAll(shuffledList.subList(
-                0, shuffledList.size() / 2 + shuffledList.size() % 2));
-        dataRandomSplitTest.addAll(shuffledList.subList(
-                shuffledList.size() / 2 + shuffledList.size() % 2, shuffledList.size()));
+        for (int i = 0; i < processedData.size(); i++) {
+            if (i % 2 == 0) {
+                dataHalfSplitTest.add(processedData.get(i));
+                dataRandomSplitTest.add(shuffledList.get(i));
+            } else {
+                dataHalfSplitTraining.add(processedData.get(i));
+                dataRandomSplitTraining.add(shuffledList.get(i));
+            }
+        }
     }
 
     int getnClasses() {

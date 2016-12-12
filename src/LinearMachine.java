@@ -33,7 +33,7 @@ public class LinearMachine {
             EA.setPopulationSize(20, 50);
             EA.setFitnessThreshold(1.0);
 
-            EA.setMaximalGenerations(5);
+            EA.setMaximalGenerations(100);
 
 
         } catch (JEvolutionException e) {
