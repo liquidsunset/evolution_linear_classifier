@@ -194,7 +194,7 @@ class DataImporter {
         ArrayList<Integer> classArray = new ArrayList<>(classCount);
         Collections.sort(classArray);
 
-        for(int i = 0; i < classCount.size(); i++) {
+        for (int i = 0; i < classCount.size(); i++) {
             splitPerClass.add(new ArrayList<>());
         }
 

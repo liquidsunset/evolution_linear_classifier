@@ -24,13 +24,13 @@ class DataItem {
 
     double calcLinearDiscriminantFunction(ArrayList<Double> hyperPlaneVector) {
 
-        if(hyperPlaneVector.size() != featureList.length) {
+        if (hyperPlaneVector.size() != featureList.length) {
             throw new IndexOutOfBoundsException("Weight size must be the same as feature size");
         }
 
         double calculatedWeight = 0.0;
 
-        for(int i = 0; i < featureList.length; i++){
+        for (int i = 0; i < featureList.length; i++) {
             calculatedWeight += featureList[i] * hyperPlaneVector.get(i);
         }
 

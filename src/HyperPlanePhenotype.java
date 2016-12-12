@@ -86,7 +86,7 @@ public class HyperPlanePhenotype implements Phenotype {
         return output;
     }
 
-    public void calcFitnessWithHyperPlanes(ArrayList<DataItem> dataToCheck) {
+    void calcFitnessWithHyperPlanes(ArrayList<DataItem> dataToCheck) {
         nCorrect = 0;
         nNotCorrect = 0;
 
@@ -110,9 +110,7 @@ public class HyperPlanePhenotype implements Phenotype {
                         nNotCorrect++;
                     }
                 }
-
             }
-
         }
     }
 }

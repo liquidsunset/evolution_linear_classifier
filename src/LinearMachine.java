@@ -11,7 +11,7 @@ public class LinearMachine {
 
     public static void main(String[] args) {
 
-        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.WHITEWINE);
+        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.LEAF);
 
         JEvolution EA = JEvolution.getInstance();
         Reporter reporter = EA.getReporter();
@@ -33,7 +33,7 @@ public class LinearMachine {
             EA.setPopulationSize(20, 50);
             EA.setFitnessThreshold(1.0);
 
-            EA.setMaximalGenerations(100);
+            EA.setMaximalGenerations(5);
 
 
         } catch (JEvolutionException e) {
