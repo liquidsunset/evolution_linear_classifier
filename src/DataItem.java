@@ -14,15 +14,15 @@ class DataItem {
         this.featureList = featureList;
     }
 
-    public int getItemClass() {
+    int getItemClass() {
         return itemClass;
     }
 
-    public double[] getFeatureList() {
+    double[] getFeatureList() {
         return featureList;
     }
 
-    public double calcLinearDiscriminantFunction(ArrayList<Double> hyperPlaneVector) {
+    double calcLinearDiscriminantFunction(ArrayList<Double> hyperPlaneVector) {
 
         if(hyperPlaneVector.size() != featureList.length) {
             throw new IndexOutOfBoundsException("Weight size must be the same as feature size");

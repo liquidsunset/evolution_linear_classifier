@@ -16,21 +16,21 @@ import java.util.Set;
 class DataImporter {
 
     enum DataSet {
-        IONOSPEHERE, DIGIT, REDWINE, WHITEWINE
+        IONOSPEHERE, DIGIT, REDWINE, WHITEWINE, LEAF
     }
 
     private static final String IONOSPHERE_DATA_PATH = "dataset/ionosphere/ionosphere.data.txt";
     private static final String DIGIT_DATA_PATH = "dataset/digit/semeion.data.txt";
     private static final String RED_WINE_PATH = "dataset/winequality/winequality-red.csv";
     private static final String WHITE_WINE_PATH = "dataset/winequality/winequality-white.csv";
+    private static final String LEAF_DATA_PATH = "dataset/leaf/leaf.csv";
 
     private ArrayList<DataItem> processedData = new ArrayList<>();
-
     private ArrayList<DataItem> dataHalfSplitTraining = new ArrayList<>();
     private ArrayList<DataItem> dataHalfSplitTest = new ArrayList<>();
-
     private ArrayList<DataItem> dataRandomSplitTraining = new ArrayList<>();
     private ArrayList<DataItem> dataRandomSplitTest = new ArrayList<>();
+    private ArrayList<ArrayList<DataItem>> splitPerClass = new ArrayList<>();
 
     private int nClasses = 0;
     private int nFeatures = 0;
@@ -50,10 +50,13 @@ class DataImporter {
             case WHITEWINE:
                 createWineData(WHITE_WINE_PATH);
                 break;
+            case LEAF:
+                createLeafData(LEAF_DATA_PATH);
+                break;
         }
 
-        splitData();
         initClassFeatureCount();
+        splitData();
         System.out.println("Processed Datasets");
     }
 
@@ -147,6 +150,59 @@ class DataImporter {
         }
     }
 
+    private void createLeafData(String filePath) {
+        try (
+                InputStream fis = new FileInputStream(filePath);
+                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                BufferedReader br = new BufferedReader(isr)
+        ) {
+            for (String line; (line = br.readLine()) != null; ) {
+                String[] splitLine = line.split(",");
+
+
+                int itemClass;
+                try {
+                    itemClass = Integer.valueOf(splitLine[0]);
+                } catch (NumberFormatException e) {
+                    continue;
+                }
+
+                double[] features = new double[splitLine.length - 1];
+                for (int i = 1; i < splitLine.length - 1; i++) {
+                    features[i] = Double.valueOf(splitLine[i]);
+                }
+
+                processedData.add(new DataItem(itemClass, features));
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void initClassFeatureCount() {
+        Set<Integer> classCount = new HashSet<>();
+
+        for (DataItem dataItem : processedData) {
+            classCount.add(dataItem.getItemClass());
+        }
+
+        nClasses = classCount.size();
+        nFeatures = processedData.get(0).getFeatureList().length;
+
+        ArrayList<Integer> classArray = new ArrayList<>(classCount);
+        Collections.sort(classArray);
+
+        for(int i = 0; i < classCount.size(); i++) {
+            splitPerClass.add(new ArrayList<>());
+        }
+
+        for (DataItem dataItem : processedData) {
+            splitPerClass.get(classArray.indexOf(dataItem.getItemClass())).add(dataItem);
+        }
+    }
+
     private void splitData() {
         dataHalfSplitTraining.addAll(processedData.subList(
                 0, processedData.size() / 2 + processedData.size() % 2));
@@ -162,26 +218,15 @@ class DataImporter {
                 shuffledList.size() / 2 + shuffledList.size() % 2, shuffledList.size()));
     }
 
-    private void initClassFeatureCount() {
-        Set<Integer> classCount = new HashSet<>();
-
-        for (DataItem dataItem : processedData) {
-            classCount.add(dataItem.getItemClass());
-        }
-
-        nClasses = classCount.size();
-        nFeatures = processedData.get(0).getFeatureList().length;
-    }
-
-    public int getnClasses() {
+    int getnClasses() {
         return nClasses;
     }
 
-    public int getnFeatures() {
+    int getnFeatures() {
         return nFeatures;
     }
 
-    public ArrayList<DataItem> getProcessedData() {
+    ArrayList<DataItem> getProcessedData() {
         return processedData;
     }
 
@@ -200,4 +245,5 @@ class DataImporter {
     public ArrayList<DataItem> getDataRandomSplitTest() {
         return dataRandomSplitTest;
     }
+
 }

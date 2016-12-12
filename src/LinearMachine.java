@@ -1,5 +1,6 @@
 import evSOLve.JEvolution.JEvolution;
 import evSOLve.JEvolution.JEvolutionException;
+import evSOLve.JEvolution.Reporter;
 import evSOLve.JEvolution.chromosomes.RealChromosome;
 
 /**
@@ -10,17 +11,16 @@ public class LinearMachine {
 
     public static void main(String[] args) {
 
-        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.REDWINE);
-
+        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.WHITEWINE);
 
         JEvolution EA = JEvolution.getInstance();
+        Reporter reporter = EA.getReporter();
         EA.setMaximization(true);
 
         RealChromosome chrom = new RealChromosome();
 
-
         HyperPlanePhenotype hyperPlanePhenotype = new HyperPlanePhenotype(
-                dataImporter.getDataHalfSplitTest(), dataImporter.getnClasses());
+                dataImporter.getDataHalfSplitTraining(), dataImporter.getnClasses());
 
         try {
 
@@ -33,7 +33,6 @@ public class LinearMachine {
             EA.setPopulationSize(20, 50);
             EA.setFitnessThreshold(1.0);
 
-
             EA.setMaximalGenerations(100);
 
 
@@ -43,6 +42,13 @@ public class LinearMachine {
         }
 
         EA.doEvolve();
+
+        HyperPlanePhenotype classifier = (HyperPlanePhenotype) reporter.getBestIndividual()
+                .getPhenotype().clone();
+
+        classifier.calcFitnessWithHyperPlanes(dataImporter.getDataHalfSplitTest());
+        classifier.calcFitness();
+        System.out.println(classifier.getFitness());
 
     }
 }

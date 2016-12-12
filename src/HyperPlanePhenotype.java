@@ -19,14 +19,14 @@ public class HyperPlanePhenotype implements Phenotype {
     private int sampleCount;
 
 
-    private ArrayList<DataItem> testData;
+    private ArrayList<DataItem> trainingData;
 
     private ArrayList<HyperPlane> hyperPlanes = new ArrayList<>();
 
-    public HyperPlanePhenotype(ArrayList<DataItem> testData, int nBases) {
-        this.testData = testData;
+    HyperPlanePhenotype(ArrayList<DataItem> trainingData, int nBases) {
+        this.trainingData = trainingData;
         this.nBases = nBases;
-        this.sampleCount = nBases * testData.size();
+        this.sampleCount = nBases * trainingData.size();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class HyperPlanePhenotype implements Phenotype {
         RealChromosome chrom = (RealChromosome) list.get(0);
         ArrayList<Double> perm = (ArrayList<Double>) chrom.getBases();
 
-        ArrayList<Double>[] hyperPlaneWeights = splitWeights(perm);
+        ArrayList<Double> hyperPlaneWeights[] = splitWeights(perm);
         hyperPlanes.clear();
         for (int i = 0; i < hyperPlaneWeights.length; i++) {
             hyperPlanes.add(new HyperPlane(hyperPlaneWeights[i], i));
@@ -45,8 +45,8 @@ public class HyperPlanePhenotype implements Phenotype {
 
     @Override
     public void calcFitness() {
-        calcFitnessWithHyperPlanes();
-        fitness = (double)nCorrect / (double)sampleCount;
+        calcFitnessWithHyperPlanes(trainingData);
+        fitness = (double) nCorrect / (double) sampleCount;
     }
 
     @Override
@@ -62,18 +62,17 @@ public class HyperPlanePhenotype implements Phenotype {
     @Override
     public Object clone() {
         try {
-            HyperPlanePhenotype clone = (HyperPlanePhenotype) super.clone();
-            return (clone);
+            return super.clone();
         } catch (CloneNotSupportedException e) {
             throw new InternalError(e.toString());
         }
 
     }
 
-    private ArrayList<Double>[] splitWeights(ArrayList<Double> list) {
+    private ArrayList[] splitWeights(ArrayList<Double> list) {
         int weightsPerClass = list.size() / nBases;
 
-        ArrayList<Double>[] output = new ArrayList[nBases];
+        ArrayList[] output = new ArrayList[nBases];
 
         for (int i = 0; i < nBases; i++) {
             int start = i * weightsPerClass;
@@ -87,25 +86,25 @@ public class HyperPlanePhenotype implements Phenotype {
         return output;
     }
 
-    private void calcFitnessWithHyperPlanes() {
+    public void calcFitnessWithHyperPlanes(ArrayList<DataItem> dataToCheck) {
         nCorrect = 0;
         nNotCorrect = 0;
 
-        for(int i = 0; i < hyperPlanes.size(); i++) {
-            int actualClass = hyperPlanes.get(i).getCorrespondingClass();
+        for (HyperPlane hyperPlane : hyperPlanes) {
+            int actualClass = hyperPlane.getCorrespondingClass();
 
-            for(DataItem item : testData) {
+            for (DataItem item : dataToCheck) {
                 Double calculatedWeight = item.calcLinearDiscriminantFunction(
-                        hyperPlanes.get(i).getVector());
+                        hyperPlane.getVector());
 
-                if(item.getItemClass() == actualClass) {
-                    if(calculatedWeight > 0.0) {
+                if (item.getItemClass() == actualClass) {
+                    if (calculatedWeight > 0.0) {
                         nCorrect++;
                     } else {
                         nNotCorrect++;
                     }
                 } else {
-                    if(calculatedWeight < 0.0) {
+                    if (calculatedWeight <= 0.0) {
                         nCorrect++;
                     } else {
                         nNotCorrect++;
@@ -116,6 +115,4 @@ public class HyperPlanePhenotype implements Phenotype {
 
         }
     }
-
-
 }
