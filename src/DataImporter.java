@@ -19,6 +19,10 @@ class DataImporter {
         IONOSPEHERE, DIGIT, REDWINE, WHITEWINE, LEAF
     }
 
+    enum DataProcessing {
+        HALFSPLIT, RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS
+    }
+
     private static final String IONOSPHERE_DATA_PATH = "dataset/ionosphere/ionosphere.data.txt";
     private static final String DIGIT_DATA_PATH = "dataset/digit/semeion.data.txt";
     private static final String RED_WINE_PATH = "dataset/winequality/winequality-red.csv";
@@ -26,17 +30,18 @@ class DataImporter {
     private static final String LEAF_DATA_PATH = "dataset/leaf/leaf.csv";
 
     private ArrayList<DataItem> processedData = new ArrayList<>();
-    private ArrayList<DataItem> dataHalfSplitTraining = new ArrayList<>();
-    private ArrayList<DataItem> dataHalfSplitTest = new ArrayList<>();
-    private ArrayList<DataItem> dataRandomSplitTraining = new ArrayList<>();
-    private ArrayList<DataItem> dataRandomSplitTest = new ArrayList<>();
+
     private ArrayList<ArrayList<DataItem>> splitPerClass = new ArrayList<>();
+    private ArrayList<DataItem> trainingData = new ArrayList<>();
+    private ArrayList<DataItem> testData = new ArrayList<>();
 
     private int nClasses = 0;
     private int nFeatures = 0;
 
 
-    DataImporter(DataSet dataSet) {
+    DataImporter(DataSet dataSet, DataProcessing dataProcessing, int nPerClass,
+                 double nPercentPerClass) {
+
         switch (dataSet) {
             case IONOSPEHERE:
                 createIonosphereData();
@@ -56,7 +61,22 @@ class DataImporter {
         }
 
         initClassFeatureCount();
-        splitData();
+
+        switch (dataProcessing) {
+            case HALFSPLIT:
+                splitDataHalf(processedData);
+                break;
+            case RANDOMHALFSPLIT:
+                splitDataHalfRandom();
+                break;
+            case N_PER_CLASS:
+                splitDataNPerClass(nPerClass);
+                break;
+            case PERCENT_PER_CLASS:
+                splitDataPercentPerClass(nPercentPerClass);
+                break;
+        }
+
         System.out.println("Processed Datasets");
     }
 
@@ -203,19 +223,53 @@ class DataImporter {
         }
     }
 
-    private void splitData() {
+    private void splitDataHalf(ArrayList<DataItem> data) {
+        for (int i = 0; i < data.size(); i++) {
+            if (i % 2 == 0) {
+                testData.add(data.get(i));
+            } else {
+                trainingData.add(data.get(i));
+            }
+        }
+    }
 
+    private void splitDataHalfRandom() {
         ArrayList<DataItem> shuffledList = new ArrayList<>(processedData);
         Collections.shuffle(shuffledList);
+        splitDataHalf(shuffledList);
+    }
 
-        for (int i = 0; i < processedData.size(); i++) {
-            if (i % 2 == 0) {
-                dataHalfSplitTest.add(processedData.get(i));
-                dataRandomSplitTest.add(shuffledList.get(i));
+    private void splitDataNPerClass(int numberElements) {
+        for (ArrayList<DataItem> classEntry : splitPerClass) {
+            ArrayList<DataItem> testData = new ArrayList<>(classEntry);
+            Collections.shuffle(testData);
+
+            ArrayList<DataItem> trainingData = new ArrayList<>(testData.subList(0, numberElements));
+            testData.removeAll(trainingData);
+            this.trainingData.addAll(trainingData);
+            this.testData.addAll(testData);
+        }
+    }
+
+    private void splitDataPercentPerClass(double percentage) {
+        int length;
+        for (ArrayList<DataItem> classEntry : splitPerClass) {
+            length = (int) Math.floor(classEntry.size() * percentage);
+            ArrayList<DataItem> testData = new ArrayList<>(classEntry);
+            Collections.shuffle(testData);
+            ArrayList<DataItem> trainingData = new ArrayList<>();
+            if (length == 0) {
+                trainingData.add(testData.get(0));
+                if (testData.size() != 1) {
+                    testData.removeAll(trainingData);
+                }
             } else {
-                dataHalfSplitTraining.add(processedData.get(i));
-                dataRandomSplitTraining.add(shuffledList.get(i));
+                trainingData.addAll(testData.subList(0, length));
+                testData.removeAll(trainingData);
             }
+
+            this.testData.addAll(testData);
+            this.trainingData.addAll(trainingData);
         }
     }
 
@@ -227,24 +281,11 @@ class DataImporter {
         return nFeatures;
     }
 
-    ArrayList<DataItem> getProcessedData() {
-        return processedData;
+    ArrayList<DataItem> getTrainingData() {
+        return trainingData;
     }
 
-    public ArrayList<DataItem> getDataHalfSplitTraining() {
-        return dataHalfSplitTraining;
+    ArrayList<DataItem> getTestData() {
+        return testData;
     }
-
-    public ArrayList<DataItem> getDataHalfSplitTest() {
-        return dataHalfSplitTest;
-    }
-
-    public ArrayList<DataItem> getDataRandomSplitTraining() {
-        return dataRandomSplitTraining;
-    }
-
-    public ArrayList<DataItem> getDataRandomSplitTest() {
-        return dataRandomSplitTest;
-    }
-
 }

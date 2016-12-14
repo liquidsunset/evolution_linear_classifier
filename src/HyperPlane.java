@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Created by liquidsunset on 23.11.16.
+ * HyperPlane Object
  */
 class HyperPlane {
 

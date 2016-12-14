@@ -1,6 +1,6 @@
 import evSOLve.JEvolution.JEvolution;
 import evSOLve.JEvolution.JEvolutionException;
-import evSOLve.JEvolution.Reporter;
+import evSOLve.JEvolution.JEvolutionReporter;
 import evSOLve.JEvolution.chromosomes.RealChromosome;
 
 /**
@@ -8,19 +8,22 @@ import evSOLve.JEvolution.chromosomes.RealChromosome;
  */
 public class LinearMachine {
 
+    private static final int nPerClass = 1;
+    private static final double percentagePerClass = 0.8;
 
     public static void main(String[] args) {
 
-        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.LEAF);
+        DataImporter dataImporter = new DataImporter(DataImporter.DataSet.DIGIT,
+                DataImporter.DataProcessing.RANDOMHALFSPLIT, nPerClass, percentagePerClass);
 
         JEvolution EA = JEvolution.getInstance();
-        Reporter reporter = EA.getReporter();
+        JEvolutionReporter jEvolutionReporter = (JEvolutionReporter) EA.getReporter();
         EA.setMaximization(true);
 
         RealChromosome chrom = new RealChromosome();
 
         HyperPlanePhenotype hyperPlanePhenotype = new HyperPlanePhenotype(
-                dataImporter.getDataHalfSplitTraining(), dataImporter.getnClasses());
+                dataImporter.getTrainingData(), dataImporter.getnClasses());
 
         try {
 
@@ -35,7 +38,6 @@ public class LinearMachine {
 
             EA.setMaximalGenerations(100);
 
-
         } catch (JEvolutionException e) {
             System.out.println(e.toString());
             System.out.println("Continuing with default values.");
@@ -43,10 +45,10 @@ public class LinearMachine {
 
         EA.doEvolve();
 
-        HyperPlanePhenotype classifier = (HyperPlanePhenotype) reporter.getBestIndividual()
-                .getPhenotype().clone();
+        HyperPlanePhenotype classifier = (HyperPlanePhenotype) jEvolutionReporter
+                .getBestIndividual().getPhenotype().clone();
 
-        classifier.calcFitnessWithHyperPlanes(dataImporter.getDataHalfSplitTest());
+        classifier.calcFitnessWithHyperPlanes(dataImporter.getTestData());
         classifier.calcFitness();
         System.out.println(classifier.getFitness());
 
