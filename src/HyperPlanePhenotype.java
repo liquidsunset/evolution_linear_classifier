@@ -123,5 +123,6 @@ public class HyperPlanePhenotype implements Phenotype {
 
     void setTrainingData(ArrayList<DataItem> trainingData) {
         this.trainingData = trainingData;
+        this.sampleCount = nBases * trainingData.size();
     }
 }

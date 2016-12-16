@@ -23,7 +23,7 @@ public class LinearMachine {
 
         for (int i = 0; i < NUMBER_RUNS; i++) {
 
-            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.DIGIT,
+            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.IONOSPEHERE,
                     DataImporter.DataProcessing.RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS);
 
             ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
@@ -53,7 +53,7 @@ public class LinearMachine {
                 EA.setPopulationSize(20, 50);
                 EA.setFitnessThreshold(1.0);
 
-                EA.setMaximalGenerations(10000);
+                EA.setMaximalGenerations(100);
 
             } catch (JEvolutionException e) {
                 System.out.println(e.toString());
@@ -73,8 +73,7 @@ public class LinearMachine {
             fitnessValuesTest.add(classifier.getFitness());
 
             if (TWO_FOLD_STRATEGY) {
-                hyperPlanePhenotype = new HyperPlanePhenotype(testData,
-                        dataImporter.getnClasses());
+                hyperPlanePhenotype.setTrainingData(testData);
                 EA.setPhenotype(hyperPlanePhenotype);
                 EA.doEvolve();
 
