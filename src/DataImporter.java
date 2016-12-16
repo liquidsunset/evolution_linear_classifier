@@ -244,7 +244,13 @@ class DataImporter {
             ArrayList<DataItem> testData = new ArrayList<>(classEntry);
             Collections.shuffle(testData);
 
-            ArrayList<DataItem> trainingData = new ArrayList<>(testData.subList(0, numberElements));
+            ArrayList<DataItem> trainingData;
+
+            if (testData.size() != 1 && numberElements == testData.size()) {
+                trainingData = new ArrayList<>(testData.subList(0, testData.size() - 2));
+            } else {
+                trainingData = new ArrayList<>(testData.subList(0, numberElements));
+            }
 
             if (testData.size() != 1) {
                 testData.removeAll(trainingData);
