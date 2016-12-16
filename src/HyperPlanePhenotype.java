@@ -94,17 +94,17 @@ public class HyperPlanePhenotype implements Phenotype {
             int actualClass = hyperPlane.getCorrespondingClass();
 
             for (DataItem item : dataToCheck) {
-                Double calculatedWeight = item.calcLinearDiscriminantFunction(
+                Double distance = item.calcLinearDiscriminantFunction(
                         hyperPlane.getVector());
 
                 if (item.getItemClass() == actualClass) {
-                    if (calculatedWeight > 0.0) {
+                    if (distance > 0.0) {
                         nCorrect++;
                     } else {
                         nNotCorrect++;
                     }
                 } else {
-                    if (calculatedWeight <= 0.0) {
+                    if (distance <= 0.0) {
                         nCorrect++;
                     } else {
                         nNotCorrect++;
@@ -112,5 +112,9 @@ public class HyperPlanePhenotype implements Phenotype {
                 }
             }
         }
+    }
+
+    void setTrainingData(ArrayList<DataItem> trainingData) {
+        this.trainingData = trainingData;
     }
 }

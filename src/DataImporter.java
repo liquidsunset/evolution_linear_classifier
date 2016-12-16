@@ -262,6 +262,7 @@ class DataImporter {
             ArrayList<DataItem> testData = new ArrayList<>(classEntry);
             Collections.shuffle(testData);
             ArrayList<DataItem> trainingData = new ArrayList<>();
+
             if (length == 0) {
                 trainingData.add(testData.get(0));
                 if (testData.size() != 1) {
