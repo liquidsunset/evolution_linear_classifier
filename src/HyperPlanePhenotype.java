@@ -2,6 +2,7 @@ import org.jdom2.Element;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import evSOLve.JEvolution.Phenotype;
 import evSOLve.JEvolution.chromosomes.Chromosome;
@@ -67,6 +68,12 @@ public class HyperPlanePhenotype implements Phenotype {
             throw new InternalError(e.toString());
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return hyperPlanes.stream().map(Object::toString)
+                .collect(Collectors.joining(""));
     }
 
     private ArrayList[] splitWeights(ArrayList<Double> list) {

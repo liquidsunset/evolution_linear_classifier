@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * HyperPlane Object
@@ -20,5 +21,12 @@ class HyperPlane {
 
     int getCorrespondingClass() {
         return correspondingClass;
+    }
+
+    public String toString() {
+        return "Hyperplane for class " + correspondingClass + ": " +
+                vector.stream().map(Object::toString)
+                        .collect(Collectors.joining(", ")) +
+                System.lineSeparator();
     }
 }

@@ -12,7 +12,7 @@ public class LinearMachine {
 
     private static final int N_PER_CLASS = 1;
     private static final double PERCENT_PER_CLASS = 0.8;
-    private static final boolean TWO_FOLD_STRATEGY = false;
+    private static final boolean TWO_FOLD_STRATEGY = true;
     private static final int NUMBER_RUNS = 10;
 
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class LinearMachine {
         for (int i = 0; i < NUMBER_RUNS; i++) {
 
             DataImporter dataImporter = new DataImporter(DataImporter.DataSet.IONOSPEHERE,
-                    DataImporter.DataProcessing.PERCENT_PER_CLASS, N_PER_CLASS, PERCENT_PER_CLASS);
+                    DataImporter.DataProcessing.RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS);
 
             ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
             ArrayList<DataItem> testData = dataImporter.getTestData();
