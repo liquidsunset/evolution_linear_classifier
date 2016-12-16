@@ -46,7 +46,7 @@ public class HyperPlanePhenotype implements Phenotype {
 
     @Override
     public void calcFitness() {
-        calcFitnessWithHyperPlanes(trainingData);
+        calcFitnessWithHyperPlanes();
         fitness = (double) nCorrect / (double) sampleCount;
     }
 
@@ -93,14 +93,14 @@ public class HyperPlanePhenotype implements Phenotype {
         return output;
     }
 
-    void calcFitnessWithHyperPlanes(ArrayList<DataItem> dataToCheck) {
+    void calcFitnessWithHyperPlanes() {
         nCorrect = 0;
         nNotCorrect = 0;
 
         for (HyperPlane hyperPlane : hyperPlanes) {
             int actualClass = hyperPlane.getCorrespondingClass();
 
-            for (DataItem item : dataToCheck) {
+            for (DataItem item : trainingData) {
                 Double distance = item.calcLinearDiscriminantFunction(
                         hyperPlane.getVector());
 

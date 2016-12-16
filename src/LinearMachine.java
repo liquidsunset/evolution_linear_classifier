@@ -12,8 +12,8 @@ public class LinearMachine {
 
     private static final int N_PER_CLASS = 1;
     private static final double PERCENT_PER_CLASS = 0.8;
-    private static final boolean TWO_FOLD_STRATEGY = true;
-    private static final int NUMBER_RUNS = 10;
+    private static final boolean TWO_FOLD_STRATEGY = false;
+    private static final int NUMBER_RUNS = 1;
 
     public static void main(String[] args) {
 
@@ -23,8 +23,8 @@ public class LinearMachine {
 
         for (int i = 0; i < NUMBER_RUNS; i++) {
 
-            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.IONOSPEHERE,
-                    DataImporter.DataProcessing.RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS);
+            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.REDWINE,
+                    DataImporter.DataProcessing.N_PER_CLASS, N_PER_CLASS, PERCENT_PER_CLASS);
 
             ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
             ArrayList<DataItem> testData = dataImporter.getTestData();
@@ -67,13 +67,13 @@ public class LinearMachine {
 
             fitnessValuesTraining.add(classifier.getFitness());
 
-            classifier.calcFitnessWithHyperPlanes(testData);
+            classifier.setTrainingData(testData);
+            classifier.calcFitnessWithHyperPlanes();
             classifier.calcFitness();
 
             fitnessValuesTest.add(classifier.getFitness());
 
             if (TWO_FOLD_STRATEGY) {
-                hyperPlanePhenotype.setTrainingData(testData);
                 EA.setPhenotype(hyperPlanePhenotype);
                 EA.doEvolve();
 
@@ -82,7 +82,8 @@ public class LinearMachine {
 
                 fitnessValuesTraining.add(classifier.getFitness());
 
-                classifier.calcFitnessWithHyperPlanes(trainingData);
+                classifier.setTrainingData(trainingData);
+                classifier.calcFitnessWithHyperPlanes();
                 classifier.calcFitness();
 
                 fitnessValuesTest.add(classifier.getFitness());
@@ -95,7 +96,7 @@ public class LinearMachine {
 
         System.out.println("Average Fitness Training: " + calcAverage(fitnessValuesTraining));
         System.out.println("Average Fitness Test: " + calcAverage(fitnessValuesTest));
-        System.out.println("Average Evolution Time: " + calcAverage(evolutionTime));
+        System.out.println("Average Evolution Time: " + calcAverage(evolutionTime) + " seconds");
 
     }
 
