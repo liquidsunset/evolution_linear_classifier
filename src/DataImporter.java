@@ -246,7 +246,7 @@ class DataImporter {
 
             ArrayList<DataItem> trainingData;
 
-            if (testData.size() != 1 && numberElements == testData.size()) {
+            if (testData.size() != 1 && numberElements >= testData.size()) {
                 trainingData = new ArrayList<>(testData.subList(0, testData.size() - 2));
             } else {
                 trainingData = new ArrayList<>(testData.subList(0, numberElements));
