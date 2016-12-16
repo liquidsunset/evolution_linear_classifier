@@ -12,7 +12,7 @@ public class LinearMachine {
 
     private static final int N_PER_CLASS = 1;
     private static final double PERCENT_PER_CLASS = 0.8;
-    private static final boolean TWO_FOLD_STRATEGY = false;
+    private static final boolean TWO_FOLD_STRATEGY = true;
     private static final int NUMBER_RUNS = 1;
 
     public static void main(String[] args) {
@@ -23,8 +23,8 @@ public class LinearMachine {
 
         for (int i = 0; i < NUMBER_RUNS; i++) {
 
-            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.REDWINE,
-                    DataImporter.DataProcessing.N_PER_CLASS, N_PER_CLASS, PERCENT_PER_CLASS);
+            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.DIGIT,
+                    DataImporter.DataProcessing.RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS);
 
             ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
             ArrayList<DataItem> testData = dataImporter.getTestData();
@@ -53,7 +53,7 @@ public class LinearMachine {
                 EA.setPopulationSize(20, 50);
                 EA.setFitnessThreshold(1.0);
 
-                EA.setMaximalGenerations(100);
+                EA.setMaximalGenerations(50);
 
             } catch (JEvolutionException e) {
                 System.out.println(e.toString());
@@ -65,6 +65,7 @@ public class LinearMachine {
             HyperPlanePhenotype classifier = (HyperPlanePhenotype) jEvolutionReporter
                     .getBestIndividual().getPhenotype().clone();
 
+            evolutionTime.add(EA.getEvolutionTime());
             fitnessValuesTraining.add(classifier.getFitness());
 
             classifier.setTrainingData(testData);
@@ -80,6 +81,7 @@ public class LinearMachine {
                 classifier = (HyperPlanePhenotype) jEvolutionReporter
                         .getBestIndividual().getPhenotype().clone();
 
+                evolutionTime.add(EA.getEvolutionTime());
                 fitnessValuesTraining.add(classifier.getFitness());
 
                 classifier.setTrainingData(trainingData);
@@ -90,7 +92,6 @@ public class LinearMachine {
 
             }
 
-            evolutionTime.add(EA.getEvolutionTime());
 
         }
 
