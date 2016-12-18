@@ -16,7 +16,7 @@ import java.util.Set;
 class DataImporter {
 
     enum DataSet {
-        IONOSPEHERE, DIGIT, REDWINE, WHITEWINE, LEAF
+        IONOSPHERE, DIGIT, REDWINE, WHITEWINE, LEAF
     }
 
     enum DataProcessing {
@@ -43,7 +43,7 @@ class DataImporter {
                  double nPercentPerClass) {
 
         switch (dataSet) {
-            case IONOSPEHERE:
+            case IONOSPHERE:
                 createIonosphereData();
                 break;
             case DIGIT:
