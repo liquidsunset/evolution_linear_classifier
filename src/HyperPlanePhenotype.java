@@ -2,7 +2,6 @@ import org.jdom2.Element;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,14 +40,14 @@ public class HyperPlanePhenotype implements Phenotype {
         ArrayList<Double> hyperPlaneWeights[] = splitWeights(perm);
         hyperPlanes.clear();
         for (int i = 0; i < hyperPlaneWeights.length; i++) {
-            hyperPlanes.add(new HyperPlane(hyperPlaneWeights[i], i));
+            hyperPlanes.add(new HyperPlane(hyperPlaneWeights[i], i, nBases));
         }
 
     }
 
     @Override
     public void calcFitness() {
-        calcFitnessWithHyperPlanes();
+        calcFitnessWithAssignedHyperPlanes();
         fitness = (double) nCorrect / (double) sampleCount;
     }
 
@@ -95,7 +94,7 @@ public class HyperPlanePhenotype implements Phenotype {
         return output;
     }
 
-    void calcFitnessWithHyperPlanes() {
+    void calcFitnessWithAssignedHyperPlanes() {
         nCorrect = 0;
         nNotCorrect = 0;
 
@@ -103,10 +102,10 @@ public class HyperPlanePhenotype implements Phenotype {
             Double[] values = new Double[nBases];
             double actual = 0.0;
             for (HyperPlane hyperPlane : hyperPlanes) {
-                values[hyperPlane.getCorrespondingClass()] = item.calcLinearDiscriminantFunction(hyperPlane.getVector());
+                values[hyperPlane.getId()] = item.calcLDF(hyperPlane.getVector());
 
-                if (item.getItemClass() == hyperPlane.getCorrespondingClass()) {
-                    actual = values[hyperPlane.getCorrespondingClass()];
+                if (item.getItemClass() == hyperPlane.getId()) {
+                    actual = values[hyperPlane.getId()];
                 }
             }
 
@@ -116,12 +115,41 @@ public class HyperPlanePhenotype implements Phenotype {
             if (maxvalue == actual) {
                 nCorrect++;
             }
+        }
+    }
 
+    void calcFitnessWithHyperPlanes() {
+
+        int[] itemsPerClass = new int[nBases];
+        HyperPlane responseHyperPlane = null;
+        for (DataItem item : trainingData) {
+            itemsPerClass[item.getMappedItemClass()]++;
+            Double oldResponse = null;
+            for (HyperPlane hyperPlane : hyperPlanes) {
+                double response = item.calcLDF(hyperPlane.getVector());
+
+                if (oldResponse == null) {
+                    oldResponse = response;
+                    responseHyperPlane = hyperPlane;
+                } else {
+                    if (oldResponse < response) {
+                        responseHyperPlane = hyperPlane;
+                    }
+                }
+            }
+
+            if (responseHyperPlane != null) {
+                responseHyperPlane.setDataItem(item);
+            }
         }
     }
 
     void setTrainingData(ArrayList<DataItem> trainingData) {
         this.trainingData = trainingData;
         this.sampleCount = trainingData.size();
+    }
+
+    private void assignHyperPlanes() {
+        //Todo: Implement an awesome function for assigning the hyperplances to the class-id
     }
 }

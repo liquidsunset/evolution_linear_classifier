@@ -7,26 +7,36 @@ import java.util.stream.Collectors;
 class HyperPlane {
 
     private ArrayList<Double> vector;
-    private int correspondingClass;
+    private int id;
+    private int[] classResponses;
 
 
-    HyperPlane(ArrayList<Double> vector, int correspondingClass) {
+    HyperPlane(ArrayList<Double> vector, int id, int classCount) {
         this.vector = vector;
-        this.correspondingClass = correspondingClass;
+        this.id = id;
+        classResponses = new int[classCount];
     }
 
     ArrayList<Double> getVector() {
         return vector;
     }
 
-    int getCorrespondingClass() {
-        return correspondingClass;
+    int getId() {
+        return id;
     }
 
     public String toString() {
-        return "Hyperplane for class " + correspondingClass + ": " +
+        return "Hyperplane for class " + id + ": " +
                 vector.stream().map(Object::toString)
                         .collect(Collectors.joining(", ")) +
                 System.lineSeparator();
+    }
+
+    void setDataItem(DataItem item) {
+        classResponses[item.getMappedItemClass()]++;
+    }
+
+    int[] getClassResponses() {
+        return classResponses;
     }
 }

@@ -26,8 +26,8 @@ public class LinearMachine {
 
         for (int i = 0; i < NUMBER_RUNS; i++) {
 
-            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.REDWINE,
-                    DataImporter.DataProcessing.PERCENT_PER_CLASS, N_PER_CLASS, PERCENT_PER_CLASS);
+            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.DIGIT,
+                    DataImporter.DataProcessing.RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS);
 
             ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
             ArrayList<DataItem> testData = dataImporter.getTestData();
@@ -56,7 +56,7 @@ public class LinearMachine {
                 EA.setPopulationSize(20, 50);
                 EA.setFitnessThreshold(1.0);
 
-                EA.setMaximalGenerations(1000);
+                EA.setMaximalGenerations(100);
 
             } catch (JEvolutionException e) {
                 System.out.println(e.toString());
@@ -72,7 +72,7 @@ public class LinearMachine {
             fitnessValuesTraining.add(classifier.getFitness());
 
             classifier.setTrainingData(testData);
-            classifier.calcFitnessWithHyperPlanes();
+            classifier.calcFitnessWithAssignedHyperPlanes();
             classifier.calcFitness();
 
             fitnessValuesTest.add(classifier.getFitness());
@@ -88,14 +88,11 @@ public class LinearMachine {
                 fitnessValuesTraining.add(classifier.getFitness());
 
                 classifier.setTrainingData(trainingData);
-                classifier.calcFitnessWithHyperPlanes();
+                classifier.calcFitnessWithAssignedHyperPlanes();
                 classifier.calcFitness();
 
                 fitnessValuesTest.add(classifier.getFitness());
-
             }
-
-
         }
 
         long estimatedTime = System.nanoTime() - startTime;

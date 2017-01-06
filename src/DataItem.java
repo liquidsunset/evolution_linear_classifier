@@ -7,6 +7,7 @@ class DataItem {
 
 
     private int itemClass;
+    private int mappedItemClass;
     private double featureList[];
 
     DataItem(int itemClass, double featureList[]) {
@@ -22,7 +23,15 @@ class DataItem {
         return featureList;
     }
 
-    double calcLinearDiscriminantFunction(ArrayList<Double> hyperPlaneVector) {
+    int getMappedItemClass() {
+        return mappedItemClass;
+    }
+
+    void setMappedItemClass(int mappedItemClass) {
+        this.mappedItemClass = mappedItemClass;
+    }
+
+    double calcLDF(ArrayList<Double> hyperPlaneVector) {
 
         if (hyperPlaneVector.size() != featureList.length) {
             throw new IndexOutOfBoundsException("Weight size must be the same as feature size");

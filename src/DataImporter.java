@@ -38,6 +38,8 @@ class DataImporter {
     private int nClasses = 0;
     private int nFeatures = 0;
 
+    private int[][] classMapping;
+
 
     DataImporter(DataSet dataSet, DataProcessing dataProcessing, int nPerClass,
                  double nPercentPerClass) {
@@ -210,17 +212,30 @@ class DataImporter {
 
         nClasses = classCount.size();
         nFeatures = processedData.get(0).getFeatureList().length;
+        classMapping = new int[nClasses][1];
 
         ArrayList<Integer> classArray = new ArrayList<>(classCount);
         Collections.sort(classArray);
 
+
+        ArrayList<Integer> classArrayList = new ArrayList<>(classCount);
+        Collections.sort(classArrayList);
         for (int i = 0; i < classCount.size(); i++) {
             splitPerClass.add(new ArrayList<>());
+            classMapping[i][0] = classArray.get(i);
         }
 
         for (DataItem dataItem : processedData) {
+
+            for (int i = 0; i < classMapping.length; i++) {
+                if (classMapping[i][0] == dataItem.getItemClass()) {
+                    dataItem.setMappedItemClass(i);
+                }
+            }
+
             splitPerClass.get(classArray.indexOf(dataItem.getItemClass())).add(dataItem);
         }
+
     }
 
     private void splitDataHalf(ArrayList<DataItem> data) {
