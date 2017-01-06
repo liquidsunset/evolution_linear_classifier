@@ -1,6 +1,8 @@
 import org.jdom2.Element;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +29,7 @@ public class HyperPlanePhenotype implements Phenotype {
     HyperPlanePhenotype(ArrayList<DataItem> trainingData, int nBases) {
         this.trainingData = trainingData;
         this.nBases = nBases;
-        this.sampleCount = nBases * trainingData.size();
+        this.sampleCount = trainingData.size();
     }
 
     @Override
@@ -97,32 +99,29 @@ public class HyperPlanePhenotype implements Phenotype {
         nCorrect = 0;
         nNotCorrect = 0;
 
-        for (HyperPlane hyperPlane : hyperPlanes) {
-            int actualClass = hyperPlane.getCorrespondingClass();
+        for (DataItem item : trainingData) {
+            Double[] values = new Double[nBases];
+            double actual = 0.0;
+            for (HyperPlane hyperPlane : hyperPlanes) {
+                values[hyperPlane.getCorrespondingClass()] = item.calcLinearDiscriminantFunction(hyperPlane.getVector());
 
-            for (DataItem item : trainingData) {
-                Double distance = item.calcLinearDiscriminantFunction(
-                        hyperPlane.getVector());
-
-                if (item.getItemClass() == actualClass) {
-                    if (distance > 0.0) {
-                        nCorrect++;
-                    } else {
-                        nNotCorrect++;
-                    }
-                } else {
-                    if (distance <= 0.0) {
-                        nCorrect++;
-                    } else {
-                        nNotCorrect++;
-                    }
+                if (item.getItemClass() == hyperPlane.getCorrespondingClass()) {
+                    actual = values[hyperPlane.getCorrespondingClass()];
                 }
             }
+
+            Arrays.sort(values);
+            double maxvalue = values[nBases - 1];
+
+            if (maxvalue == actual) {
+                nCorrect++;
+            }
+
         }
     }
 
     void setTrainingData(ArrayList<DataItem> trainingData) {
         this.trainingData = trainingData;
-        this.sampleCount = nBases * trainingData.size();
+        this.sampleCount = trainingData.size();
     }
 }

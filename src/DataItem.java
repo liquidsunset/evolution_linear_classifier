@@ -28,12 +28,12 @@ class DataItem {
             throw new IndexOutOfBoundsException("Weight size must be the same as feature size");
         }
 
-        double calculatedDistance = 0.0;
+        double response = 0.0;
 
         for (int i = 0; i < featureList.length; i++) {
-            calculatedDistance += featureList[i] * hyperPlaneVector.get(i);
+            response += featureList[i] * hyperPlaneVector.get(i);
         }
 
-        return calculatedDistance;
+        return response;
     }
 }
