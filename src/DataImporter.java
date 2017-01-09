@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * Class for importing the datasets and splitting into test and training data
@@ -38,7 +40,7 @@ class DataImporter {
     private int nClasses = 0;
     private int nFeatures = 0;
 
-    private int[][] classMapping;
+    private SortedMap<Integer, Integer> classMapping;
 
 
     DataImporter(DataSet dataSet, DataProcessing dataProcessing, int nPerClass,
@@ -212,27 +214,23 @@ class DataImporter {
 
         nClasses = classCount.size();
         nFeatures = processedData.get(0).getFeatureList().length;
-        classMapping = new int[nClasses][1];
+
 
         ArrayList<Integer> classArray = new ArrayList<>(classCount);
         Collections.sort(classArray);
 
+        classMapping = new TreeMap<>();
 
         ArrayList<Integer> classArrayList = new ArrayList<>(classCount);
         Collections.sort(classArrayList);
+
         for (int i = 0; i < classCount.size(); i++) {
             splitPerClass.add(new ArrayList<>());
-            classMapping[i][0] = classArray.get(i);
+            classMapping.put(classArrayList.get(i), i);
         }
 
         for (DataItem dataItem : processedData) {
-
-            for (int i = 0; i < classMapping.length; i++) {
-                if (classMapping[i][0] == dataItem.getItemClass()) {
-                    dataItem.setMappedItemClass(i);
-                }
-            }
-
+            dataItem.setMappedItemClass(classMapping.get(dataItem.getItemClass()));
             splitPerClass.get(classArray.indexOf(dataItem.getItemClass())).add(dataItem);
         }
 
