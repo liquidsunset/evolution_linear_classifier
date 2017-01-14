@@ -18,11 +18,35 @@ import java.util.TreeMap;
 class DataImporter {
 
     enum DataSet {
-        IONOSPHERE, DIGIT, REDWINE, WHITEWINE, LEAF
+        IONOSPHERE("Ionosphere"), DIGIT("Digit"), REDWINE("Redwine"),
+        WHITEWINE("Whitewine"), LEAF("Leaf");
+
+        private final String textValue;
+
+        DataSet(String textValue) {
+            this.textValue = textValue;
+        }
+
+        @Override
+        public String toString() {
+            return textValue;
+        }
     }
 
     enum DataProcessing {
-        HALFSPLIT, RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS
+        HALFSPLIT("Halfsplit"), RANDOMHALFSPLIT("Randomhalfsplit"), N_PER_CLASS("N per Class"),
+        PERCENT_PER_CLASS("Percent per Class");
+
+        private final String textValue;
+
+        DataProcessing(String textValue) {
+            this.textValue = textValue;
+        }
+
+        @Override
+        public String toString() {
+            return textValue;
+        }
     }
 
     private static final String IONOSPHERE_DATA_PATH = "dataset/ionosphere/ionosphere.data.txt";
@@ -80,8 +104,6 @@ class DataImporter {
                 splitDataPercentPerClass(nPercentPerClass);
                 break;
         }
-
-        System.out.println("Processed Datasets");
     }
 
 

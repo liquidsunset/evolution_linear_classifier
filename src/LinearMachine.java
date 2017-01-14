@@ -13,96 +13,109 @@ public class LinearMachine {
 
     private static final int N_PER_CLASS = 1;
     private static final double PERCENT_PER_CLASS = 0.8;
-    private static final boolean TWO_FOLD_STRATEGY = false;
-    private static final int NUMBER_RUNS = 1;
+    private static final int NUMBER_RUNS = 10;
 
     public static void main(String[] args) {
 
-        ArrayList<Double> fitnessValuesTraining = new ArrayList<>();
-        ArrayList<Double> fitnessValuesTest = new ArrayList<>();
-        ArrayList<Double> evolutionTime = new ArrayList<>();
+        DataImporter.DataSet dataSet = DataImporter.DataSet.IONOSPHERE;
+        DataImporter.DataProcessing processing = DataImporter.DataProcessing.RANDOMHALFSPLIT;
 
-        long startTime = System.nanoTime();
+        int[] generations = {1, 5, 10, 50, 100, 1000, 10000};
 
-        for (int i = 0; i < NUMBER_RUNS; i++) {
+        int numberParents = 20;
+        int numberChildren = 50;
 
-            DataImporter dataImporter = new DataImporter(DataImporter.DataSet.DIGIT,
-                    DataImporter.DataProcessing.RANDOMHALFSPLIT, N_PER_CLASS, PERCENT_PER_CLASS);
+        for (int generation : generations) {
 
-            ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
-            ArrayList<DataItem> testData = dataImporter.getTestData();
+            ArrayList<Double> fitnessValuesTraining = new ArrayList<>();
+            ArrayList<Double> fitnessValuesTest = new ArrayList<>();
+            ArrayList<Double> evolutionTime = new ArrayList<>();
 
-            JEvolution EA = JEvolution.getInstance();
+            long startTime = System.nanoTime();
 
-            JEvolutionReporter jEvolutionReporter = (JEvolutionReporter) EA.getReporter();
+            for (int j = 0; j < NUMBER_RUNS; j++) {
 
-            EA.setMaximization(true);
+                DataImporter dataImporter = new DataImporter(dataSet, processing, N_PER_CLASS, PERCENT_PER_CLASS);
 
-            RealChromosome chrom = new RealChromosome();
+                ArrayList<DataItem> trainingData = dataImporter.getTrainingData();
+                ArrayList<DataItem> testData = dataImporter.getTestData();
 
-            HyperPlanePhenotype hyperPlanePhenotype = new HyperPlanePhenotype(trainingData,
-                    dataImporter.getnClasses());
-            EA.setPhenotype(hyperPlanePhenotype);
+                JEvolution EA = JEvolution.getInstance();
 
-            try {
+                JEvolutionReporter jEvolutionReporter = (JEvolutionReporter) EA.getReporter();
 
-                jEvolutionReporter.setReportLevel(1);
+                EA.setMaximization(true);
 
-                chrom.setLength(dataImporter.getnClasses() * dataImporter.getnFeatures());
-                chrom.setMutationRate(1.0);
+                RealChromosome chrom = new RealChromosome();
 
-                EA.addChromosome(chrom);
-
-                EA.setPopulationSize(20, 50);
-                EA.setFitnessThreshold(1.0);
-
-                EA.setMaximalGenerations(100);
-
-            } catch (JEvolutionException e) {
-                System.out.println(e.toString());
-                System.out.println("Continuing with default values.");
-            }
-
-            EA.doEvolve();
-
-            HyperPlanePhenotype classifier = (HyperPlanePhenotype) jEvolutionReporter
-                    .getBestIndividual().getPhenotype().clone();
-
-            evolutionTime.add(EA.getEvolutionTime());
-            fitnessValuesTraining.add(classifier.getFitness());
-
-            classifier.setTrainingData(testData);
-            classifier.calcFitnessWithAssignedHyperPlanes();
-            classifier.calcFitness();
-
-            fitnessValuesTest.add(classifier.getFitness());
-
-            if (TWO_FOLD_STRATEGY) {
+                HyperPlanePhenotype hyperPlanePhenotype = new HyperPlanePhenotype(trainingData,
+                        dataImporter.getnClasses());
                 EA.setPhenotype(hyperPlanePhenotype);
+
+                try {
+
+                    jEvolutionReporter.setReportLevel(jEvolutionReporter.QUIET);
+
+                    chrom.setLength(dataImporter.getnClasses() * dataImporter.getnFeatures());
+                    chrom.setMutationRate(1.0);
+
+                    EA.addChromosome(chrom);
+
+                    EA.setPopulationSize(numberParents, numberChildren);
+                    EA.setFitnessThreshold(1.0);
+
+                    EA.setMaximalGenerations(generation);
+
+                } catch (JEvolutionException e) {
+                    System.out.println(e.toString());
+                    System.out.println("Continuing with default values.");
+                }
+
                 EA.doEvolve();
 
-                classifier = (HyperPlanePhenotype) jEvolutionReporter
+                HyperPlanePhenotype classifier = (HyperPlanePhenotype) jEvolutionReporter
                         .getBestIndividual().getPhenotype().clone();
 
                 evolutionTime.add(EA.getEvolutionTime());
                 fitnessValuesTraining.add(classifier.getFitness());
 
-                classifier.setTrainingData(trainingData);
+                classifier.setTrainingData(testData);
                 classifier.calcFitnessWithAssignedHyperPlanes();
                 classifier.calcFitness();
 
                 fitnessValuesTest.add(classifier.getFitness());
+
+                if (processing.equals(DataImporter.DataProcessing.RANDOMHALFSPLIT)) {
+                    EA.setPhenotype(hyperPlanePhenotype);
+                    EA.doEvolve();
+
+                    classifier = (HyperPlanePhenotype) jEvolutionReporter
+                            .getBestIndividual().getPhenotype().clone();
+
+                    evolutionTime.add(EA.getEvolutionTime());
+                    fitnessValuesTraining.add(classifier.getFitness());
+
+                    classifier.setTrainingData(trainingData);
+                    classifier.calcFitnessWithAssignedHyperPlanes();
+                    classifier.calcFitness();
+
+                    fitnessValuesTest.add(classifier.getFitness());
+                }
             }
+
+            long estimatedTime = System.nanoTime() - startTime;
+            System.out.println("-----------------------------------------------------------------");
+            System.out.println("Data-Set: " + dataSet.toString());
+            System.out.println("Processing: " + processing.toString());
+            System.out.println("Number generations: " + generation);
+            System.out.println("Parents: " + numberParents + " Children: " + numberChildren);
+            System.out.println("Average Fitness Training: " + calcAverage(fitnessValuesTraining));
+            System.out.println("Average Fitness Test: " + calcAverage(fitnessValuesTest));
+            System.out.println("Average Evolution Time: " + calcAverage(evolutionTime) + " seconds");
+            System.out.println("Time elapsed: " + TimeUnit.MILLISECONDS.convert(
+                    estimatedTime, TimeUnit.NANOSECONDS) / 1000.0 + " seconds");
+            System.out.println("-----------------------------------------------------------------");
         }
-
-        long estimatedTime = System.nanoTime() - startTime;
-
-        System.out.println("Average Fitness Training: " + calcAverage(fitnessValuesTraining));
-        System.out.println("Average Fitness Test: " + calcAverage(fitnessValuesTest));
-        System.out.println("Average Evolution Time: " + calcAverage(evolutionTime) + " seconds");
-        System.out.println("Time elapsed: " + TimeUnit.MILLISECONDS.convert(
-                estimatedTime, TimeUnit.NANOSECONDS) / 1000.0 + " seconds");
-
     }
 
     private static double calcAverage(ArrayList<Double> list) {
