@@ -104,7 +104,7 @@ public class HyperPlanePhenotype implements Phenotype {
             for (HyperPlane hyperPlane : hyperPlanes) {
                 values[hyperPlane.getId()] = item.calcLDF(hyperPlane.getVector());
 
-                if (item.getItemClass() == hyperPlane.getId()) {
+                if (item.getMappedItemClass() == hyperPlane.getId()) {
                     actual = values[hyperPlane.getId()];
                 }
             }
