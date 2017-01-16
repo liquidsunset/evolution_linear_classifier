@@ -1,0 +1,70 @@
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 1
+Parents: 20 Children: 50
+Average Fitness Training: 0.7702857142857142
+Average Fitness Test: 0.45143668831168837
+Average Evolution Time: 0.008950000000000003 seconds
+Time elapsed: 0.34 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 5
+Parents: 20 Children: 50
+Average Fitness Training: 0.8334285714285714
+Average Fitness Test: 0.6614074675324676
+Average Evolution Time: 0.044750000000000005 seconds
+Time elapsed: 0.972 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 10
+Parents: 20 Children: 50
+Average Fitness Training: 0.8565714285714285
+Average Fitness Test: 0.7437012987012986
+Average Evolution Time: 0.1137 seconds
+Time elapsed: 2.349 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 50
+Parents: 20 Children: 50
+Average Fitness Training: 0.9197142857142857
+Average Fitness Test: 0.8568003246753246
+Average Evolution Time: 0.752 seconds
+Time elapsed: 15.135 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 100
+Parents: 20 Children: 50
+Average Fitness Training: 0.9451428571428571
+Average Fitness Test: 0.865413961038961
+Average Evolution Time: 1.9304499999999998 seconds
+Time elapsed: 38.729 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 1000
+Parents: 20 Children: 50
+Average Fitness Training: 0.956857142857143
+Average Fitness Test: 0.8865162337662337
+Average Evolution Time: 22.98285 seconds
+Time elapsed: 459.855 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: Randomhalfsplit
+Number generations: 10000
+Parents: 20 Children: 50
+Average Fitness Training: 0.9514285714285716
+Average Fitness Test: 0.889930194805195
+Average Evolution Time: 276.31665 seconds
+Time elapsed: 5526.751 seconds
+-----------------------------------------------------------------

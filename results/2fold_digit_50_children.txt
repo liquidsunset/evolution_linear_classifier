@@ -1,0 +1,60 @@
+-----------------------------------------------------------------
+Data-Set: Digit
+Processing: Randomhalfsplit
+Number generations: 1
+Parents: 20 Children: 50
+Average Fitness Training: 0.16652010050251256
+Average Fitness Test: 0.0993061291400541
+Average Evolution Time: 0.23170000000000002 seconds
+Time elapsed: 5.916 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Digit
+Processing: Randomhalfsplit
+Number generations: 5
+Parents: 20 Children: 50
+Average Fitness Training: 0.21853015075376886
+Average Fitness Test: 0.14457560701878275
+Average Evolution Time: 1.8390500000000003 seconds
+Time elapsed: 38.613 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Digit
+Processing: Randomhalfsplit
+Number generations: 10
+Parents: 20 Children: 50
+Average Fitness Training: 0.27832914572864326
+Average Fitness Test: 0.19579082678133453
+Average Evolution Time: 5.204700000000001 seconds
+Time elapsed: 106.483 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Digit
+Processing: Randomhalfsplit
+Number generations: 50
+Parents: 20 Children: 50
+Average Fitness Training: 0.5523241206030152
+Average Fitness Test: 0.4860700932517039
+Average Evolution Time: 32.930400000000006 seconds
+Time elapsed: 662.357 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Digit
+Processing: Randomhalfsplit
+Number generations: 100
+Parents: 20 Children: 50
+Average Fitness Training: 0.6923994974874372
+Average Fitness Test: 0.6273279036336008
+Average Evolution Time: 77.28375 seconds
+Time elapsed: 1551.476 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Digit
+Processing: Randomhalfsplit
+Number generations: 1000
+Parents: 20 Children: 50
+Average Fitness Training: 0.9236809045226128
+Average Fitness Test: 0.834262119884239
+Average Evolution Time: 931.6522500000003 seconds
+Time elapsed: 18669.95 seconds
+-----------------------------------------------------------------
