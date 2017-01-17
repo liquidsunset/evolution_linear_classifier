@@ -1,70 +1,70 @@
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 1
 Parents: 20 Children: 50
-Average Fitness Training: 0.44317897371714643
-Average Fitness Test: 0.10835536608260324
-Average Evolution Time: 0.02025000000000001 seconds
-Time elapsed: 0.584 seconds
+Average Fitness Training: 0.4389976507439311
+Average Fitness Test: 0.06490683229813665
+Average Evolution Time: 0.03590000000000001 seconds
+Time elapsed: 0.541 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 5
 Parents: 20 Children: 50
-Average Fitness Training: 0.48898623279098874
-Average Fitness Test: 0.39013743742177726
-Average Evolution Time: 0.08595 seconds
-Time elapsed: 1.8 seconds
+Average Fitness Training: 0.48214565387627245
+Average Fitness Test: 0.33850931677018636
+Average Evolution Time: 0.1281 seconds
+Time elapsed: 1.347 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 10
 Parents: 20 Children: 50
-Average Fitness Training: 0.5040050062578223
-Average Fitness Test: 0.4218732790988735
-Average Evolution Time: 0.19224999999999998 seconds
-Time elapsed: 3.925 seconds
+Average Fitness Training: 0.5046985121378229
+Average Fitness Test: 0.39316770186335404
+Average Evolution Time: 0.2466 seconds
+Time elapsed: 2.516 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 50
 Parents: 20 Children: 50
-Average Fitness Training: 0.5200250312891115
-Average Fitness Test: 0.4810556946182728
-Average Evolution Time: 1.1403999999999996 seconds
-Time elapsed: 22.919 seconds
+Average Fitness Training: 0.5132341425215348
+Average Fitness Test: 0.48229813664596277
+Average Evolution Time: 1.4059 seconds
+Time elapsed: 14.117 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 100
 Parents: 20 Children: 50
-Average Fitness Training: 0.524342928660826
-Average Fitness Test: 0.48092263767209004
-Average Evolution Time: 2.7651499999999993 seconds
-Time elapsed: 55.445 seconds
+Average Fitness Training: 0.5172278778386844
+Average Fitness Test: 0.49440993788819865
+Average Evolution Time: 3.1700999999999997 seconds
+Time elapsed: 31.771 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 1000
 Parents: 20 Children: 50
-Average Fitness Training: 0.5270337922403004
-Average Fitness Test: 0.5090731382978724
-Average Evolution Time: 31.153700000000004 seconds
-Time elapsed: 623.261 seconds
+Average Fitness Training: 0.5229444009397024
+Average Fitness Test: 0.49565217391304345
+Average Evolution Time: 36.7419 seconds
+Time elapsed: 367.551 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Redwine
-Processing: Randomhalfsplit
+Processing: Percent per Class
 Number generations: 10000
 Parents: 20 Children: 50
-Average Fitness Training: 0.5530037546933666
-Average Fitness Test: 0.5188991708385482
-Average Evolution Time: 345.96909999999997 seconds
-Time elapsed: 6919.869 seconds
+Average Fitness Training: 0.5288175411119812
+Average Fitness Test: 0.5065217391304346
+Average Evolution Time: 406.67389999999995 seconds
+Time elapsed: 4067.099 seconds
 -----------------------------------------------------------------

@@ -2,59 +2,59 @@
 Data-Set: Digit
 Processing: Percent per Class
 Number generations: 1
-Parents: 20 Children: 50
-Average Fitness Training: 0.16795275590551179
-Average Fitness Test: 0.12291021671826625
-Average Evolution Time: 0.316 seconds
-Time elapsed: 4.006 seconds
+Parents: 20 Children: 100
+Average Fitness Training: 0.17614173228346458
+Average Fitness Test: 0.10495356037151704
+Average Evolution Time: 0.6767 seconds
+Time elapsed: 8.365 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Digit
 Processing: Percent per Class
 Number generations: 5
-Parents: 20 Children: 50
-Average Fitness Training: 0.21283464566929133
-Average Fitness Test: 0.15665634674922596
-Average Evolution Time: 2.1235 seconds
-Time elapsed: 22.153 seconds
+Parents: 20 Children: 100
+Average Fitness Training: 0.2367716535433071
+Average Fitness Test: 0.14674922600619195
+Average Evolution Time: 4.6508 seconds
+Time elapsed: 48.065 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Digit
 Processing: Percent per Class
 Number generations: 10
-Parents: 20 Children: 50
-Average Fitness Training: 0.267244094488189
-Average Fitness Test: 0.21517027863777094
-Average Evolution Time: 5.5883 seconds
-Time elapsed: 57.222 seconds
+Parents: 20 Children: 100
+Average Fitness Training: 0.3196062992125984
+Average Fitness Test: 0.23003095975232196
+Average Evolution Time: 12.768599999999998 seconds
+Time elapsed: 131.582 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Digit
 Processing: Percent per Class
 Number generations: 50
-Parents: 20 Children: 50
-Average Fitness Training: 0.5518110236220471
-Average Fitness Test: 0.4931888544891641
-Average Evolution Time: 37.1166 seconds
-Time elapsed: 374.1 seconds
+Parents: 20 Children: 100
+Average Fitness Training: 0.6166141732283463
+Average Fitness Test: 0.5495356037151702
+Average Evolution Time: 78.73839999999998 seconds
+Time elapsed: 792.497 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Digit
 Processing: Percent per Class
 Number generations: 100
-Parents: 20 Children: 50
-Average Fitness Training: 0.6891338582677166
-Average Fitness Test: 0.6226006191950465
-Average Evolution Time: 86.07430000000001 seconds
-Time elapsed: 863.642 seconds
+Parents: 20 Children: 100
+Average Fitness Training: 0.7515748031496063
+Average Fitness Test: 0.6613003095975232
+Average Evolution Time: 185.75330000000002 seconds
+Time elapsed: 1864.336 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Digit
 Processing: Percent per Class
 Number generations: 1000
-Parents: 20 Children: 50
-Average Fitness Training: 0.9142519685039371
-Average Fitness Test: 0.7913312693498451
-Average Evolution Time: 1046.5786 seconds
-Time elapsed: 10469.313 seconds
+Parents: 20 Children: 100
+Average Fitness Training: 0.9540944881889765
+Average Fitness Test: 0.813312693498452
+Average Evolution Time: 2164.2526000000003 seconds
+Time elapsed: 21651.707 seconds
 -----------------------------------------------------------------

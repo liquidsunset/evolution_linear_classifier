@@ -1,0 +1,70 @@
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 1
+Parents: 20 Children: 100
+Average Fitness Training: 0.45463078848560706
+Average Fitness Test: 0.20244782540675846
+Average Evolution Time: 0.03505000000000002 seconds
+Time elapsed: 0.898 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 5
+Parents: 20 Children: 100
+Average Fitness Training: 0.5061326658322904
+Average Fitness Test: 0.3768014705882353
+Average Evolution Time: 0.16465000000000002 seconds
+Time elapsed: 3.407 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 10
+Parents: 20 Children: 100
+Average Fitness Training: 0.5151439299123906
+Average Fitness Test: 0.4529718397997497
+Average Evolution Time: 0.3857499999999999 seconds
+Time elapsed: 7.85 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 50
+Parents: 20 Children: 100
+Average Fitness Training: 0.5252190237797247
+Average Fitness Test: 0.4933777377972465
+Average Evolution Time: 2.3557500000000005 seconds
+Time elapsed: 47.289 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 100
+Parents: 20 Children: 100
+Average Fitness Training: 0.5306633291614518
+Average Fitness Test: 0.502068914267835
+Average Evolution Time: 5.431749999999999 seconds
+Time elapsed: 108.855 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 1000
+Parents: 20 Children: 100
+Average Fitness Training: 0.5341677096370463
+Average Fitness Test: 0.5067031445556945
+Average Evolution Time: 61.79894999999999 seconds
+Time elapsed: 1236.347 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: Randomhalfsplit
+Number generations: 10000
+Parents: 20 Children: 100
+Average Fitness Training: 0.5440550688360449
+Average Fitness Test: 0.5183949468085105
+Average Evolution Time: 694.9536500000002 seconds
+Time elapsed: 13899.829 seconds
+-----------------------------------------------------------------

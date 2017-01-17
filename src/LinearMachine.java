@@ -11,14 +11,14 @@ import evSOLve.JEvolution.chromosomes.RealChromosome;
  */
 public class LinearMachine {
 
-    private static final int N_PER_CLASS = 1;
+    private static final int N_PER_CLASS = 10;
     private static final double PERCENT_PER_CLASS = 0.8;
     private static final int NUMBER_RUNS = 10;
 
     public static void main(String[] args) {
 
-        DataImporter.DataSet dataSet = DataImporter.DataSet.IONOSPHERE;
-        DataImporter.DataProcessing processing = DataImporter.DataProcessing.RANDOMHALFSPLIT;
+        DataImporter.DataSet dataSet = DataImporter.DataSet.LEAF;
+        DataImporter.DataProcessing processing = DataImporter.DataProcessing.PERCENT_PER_CLASS;
 
         int[] generations = {1, 5, 10, 50, 100, 1000, 10000};
 
@@ -54,7 +54,7 @@ public class LinearMachine {
 
                 try {
 
-                    jEvolutionReporter.setReportLevel(jEvolutionReporter.QUIET);
+                    jEvolutionReporter.setReportLevel(JEvolutionReporter.QUIET);
 
                     chrom.setLength(dataImporter.getnClasses() * dataImporter.getnFeatures());
                     chrom.setMutationRate(1.0);
