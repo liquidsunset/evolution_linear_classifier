@@ -1,0 +1,70 @@
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 1
+Parents: 20 Children: 50
+Average Fitness Training: 0.33333333333333337
+Average Fitness Test: 0.16741996233521655
+Average Evolution Time: 0.006599999999999999 seconds
+Time elapsed: 0.369 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 5
+Parents: 20 Children: 50
+Average Fitness Training: 0.4666666666666666
+Average Fitness Test: 0.12473320778405524
+Average Evolution Time: 0.0366 seconds
+Time elapsed: 0.455 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 10
+Parents: 20 Children: 50
+Average Fitness Training: 0.5333333333333333
+Average Fitness Test: 0.1752667922159447
+Average Evolution Time: 0.1121 seconds
+Time elapsed: 1.199 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 50
+Parents: 20 Children: 50
+Average Fitness Training: 0.7833333333333332
+Average Fitness Test: 0.18932831136220968
+Average Evolution Time: 0.6926 seconds
+Time elapsed: 6.995 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 100
+Parents: 20 Children: 50
+Average Fitness Training: 0.8666666666666666
+Average Fitness Test: 0.20916509730069052
+Average Evolution Time: 1.6718 seconds
+Time elapsed: 16.805 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 1000
+Parents: 20 Children: 50
+Average Fitness Training: 0.9
+Average Fitness Test: 0.22416823603264283
+Average Evolution Time: 13.6948 seconds
+Time elapsed: 137.061 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Redwine
+Processing: N per Class
+Number generations: 10000
+Parents: 20 Children: 50
+Average Fitness Training: 0.9
+Average Fitness Test: 0.21726302573760198
+Average Evolution Time: 133.087 seconds
+Time elapsed: 1331.111 seconds
+-----------------------------------------------------------------

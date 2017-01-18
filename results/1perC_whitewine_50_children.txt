@@ -1,0 +1,70 @@
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 1
+Parents: 20 Children: 50
+Average Fitness Training: 0.28571428571428564
+Average Fitness Test: 0.11228787569004292
+Average Evolution Time: 0.0055 seconds
+Time elapsed: 0.452 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 5
+Parents: 20 Children: 50
+Average Fitness Training: 0.29999999999999993
+Average Fitness Test: 0.12768350030668577
+Average Evolution Time: 0.03849999999999999 seconds
+Time elapsed: 0.535 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 10
+Parents: 20 Children: 50
+Average Fitness Training: 0.37142857142857133
+Average Fitness Test: 0.1405847474953997
+Average Evolution Time: 0.12290000000000001 seconds
+Time elapsed: 1.406 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 50
+Parents: 20 Children: 50
+Average Fitness Training: 0.5285714285714285
+Average Fitness Test: 0.22702923737477
+Average Evolution Time: 0.7867 seconds
+Time elapsed: 8.016 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 100
+Parents: 20 Children: 50
+Average Fitness Training: 0.5714285714285714
+Average Fitness Test: 0.1721324882437129
+Average Evolution Time: 2.0528999999999997 seconds
+Time elapsed: 20.678 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 1000
+Parents: 20 Children: 50
+Average Fitness Training: 0.7285714285714285
+Average Fitness Test: 0.12987119198527905
+Average Evolution Time: 24.9898 seconds
+Time elapsed: 250.126 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Whitewine
+Processing: N per Class
+Number generations: 10000
+Parents: 20 Children: 50
+Average Fitness Training: 0.857142857142857
+Average Fitness Test: 0.20083827438151708
+Average Evolution Time: 272.3362 seconds
+Time elapsed: 2723.862 seconds
+-----------------------------------------------------------------
