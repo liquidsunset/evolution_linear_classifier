@@ -1,0 +1,70 @@
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 1
+Parents: 20 Children: 50
+Average Fitness Training: 0.7849999999999999
+Average Fitness Test: 0.4574018126888217
+Average Evolution Time: 0.0063 seconds
+Time elapsed: 0.217 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 5
+Parents: 20 Children: 50
+Average Fitness Training: 0.905
+Average Fitness Test: 0.6347432024169184
+Average Evolution Time: 0.0336 seconds
+Time elapsed: 0.381 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 10
+Parents: 20 Children: 50
+Average Fitness Training: 0.975
+Average Fitness Test: 0.6283987915407855
+Average Evolution Time: 0.10469999999999999 seconds
+Time elapsed: 1.103 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 50
+Parents: 20 Children: 50
+Average Fitness Training: 0.9949999999999999
+Average Fitness Test: 0.6975830815709969
+Average Evolution Time: 0.2652 seconds
+Time elapsed: 2.711 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 100
+Parents: 20 Children: 50
+Average Fitness Training: 0.9949999999999999
+Average Fitness Test: 0.7305135951661632
+Average Evolution Time: 0.6012000000000001 seconds
+Time elapsed: 6.079 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 1000
+Parents: 20 Children: 50
+Average Fitness Training: 0.9949999999999999
+Average Fitness Test: 0.7558912386706949
+Average Evolution Time: 2.3901999999999997 seconds
+Time elapsed: 23.984 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Ionosphere
+Processing: N per Class
+Number generations: 10000
+Parents: 20 Children: 50
+Average Fitness Training: 0.99
+Average Fitness Test: 0.7211480362537764
+Average Evolution Time: 51.0617 seconds
+Time elapsed: 510.767 seconds
+-----------------------------------------------------------------

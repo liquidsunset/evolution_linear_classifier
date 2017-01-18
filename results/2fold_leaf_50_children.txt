@@ -1,0 +1,70 @@
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 1
+Parents: 20 Children: 50
+Average Fitness Training: 0.07499999999999998
+Average Fitness Test: 0.038235294117647055
+Average Evolution Time: 0.04215000000000003 seconds
+Time elapsed: 1.042 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 5
+Parents: 20 Children: 50
+Average Fitness Training: 0.09794117647058824
+Average Fitness Test: 0.034999999999999996
+Average Evolution Time: 0.28615 seconds
+Time elapsed: 5.948 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 10
+Parents: 20 Children: 50
+Average Fitness Training: 0.11558823529411766
+Average Fitness Test: 0.05764705882352942
+Average Evolution Time: 0.8069000000000001 seconds
+Time elapsed: 16.472 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 50
+Parents: 20 Children: 50
+Average Fitness Training: 0.188235294117647
+Average Fitness Test: 0.10911764705882354
+Average Evolution Time: 5.412699999999999 seconds
+Time elapsed: 108.698 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 100
+Parents: 20 Children: 50
+Average Fitness Training: 0.2097058823529412
+Average Fitness Test: 0.13
+Average Evolution Time: 13.3599 seconds
+Time elapsed: 267.787 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 1000
+Parents: 20 Children: 50
+Average Fitness Training: 0.27999999999999997
+Average Fitness Test: 0.1847058823529412
+Average Evolution Time: 159.88595000000004 seconds
+Time elapsed: 3198.502 seconds
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Data-Set: Leaf
+Processing: Randomhalfsplit
+Number generations: 10000
+Parents: 20 Children: 50
+Average Fitness Training: 0.34176470588235286
+Average Fitness Test: 0.2588235294117647
+Average Evolution Time: 1749.5341 seconds
+Time elapsed: 34992.308 seconds
+-----------------------------------------------------------------
