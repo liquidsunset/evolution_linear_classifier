@@ -1,70 +1,70 @@
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 1
 Parents: 20 Children: 50
-Average Fitness Training: 0.4491702833801379
-Average Fitness Test: 0.11233435270132519
-Average Evolution Time: 0.10479999999999998 seconds
-Time elapsed: 1.354 seconds
+Average Fitness Training: 0.4503879134340547
+Average Fitness Test: 0.13674969375255203
+Average Evolution Time: 0.05389999999999999 seconds
+Time elapsed: 1.363 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 5
 Parents: 20 Children: 50
-Average Fitness Training: 0.4519019657901455
-Average Fitness Test: 0.4011213047910295
-Average Evolution Time: 0.3222 seconds
-Time elapsed: 3.334 seconds
+Average Fitness Training: 0.4547366271947735
+Average Fitness Test: 0.36216823193140063
+Average Evolution Time: 0.21055000000000001 seconds
+Time elapsed: 4.348 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 10
 Parents: 20 Children: 50
-Average Fitness Training: 0.45343375031912175
-Average Fitness Test: 0.4481141692150866
-Average Evolution Time: 0.6895000000000001 seconds
-Time elapsed: 7.011 seconds
+Average Fitness Training: 0.45420579828501423
+Average Fitness Test: 0.44697835851367895
+Average Evolution Time: 0.44785 seconds
+Time elapsed: 9.097 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 50
 Parents: 20 Children: 50
-Average Fitness Training: 0.4598161858565229
-Average Fitness Test: 0.45005096839959224
-Average Evolution Time: 3.5852000000000004 seconds
-Time elapsed: 35.974 seconds
+Average Fitness Training: 0.45775826868109437
+Average Fitness Test: 0.44397713352388735
+Average Evolution Time: 2.44845 seconds
+Time elapsed: 49.141 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 100
 Parents: 20 Children: 50
-Average Fitness Training: 0.4623946898136329
-Average Fitness Test: 0.45453618756371056
-Average Evolution Time: 7.508 seconds
-Time elapsed: 75.22 seconds
+Average Fitness Training: 0.4612494895875868
+Average Fitness Test: 0.44771335238873017
+Average Evolution Time: 5.305549999999999 seconds
+Time elapsed: 106.308 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 1000
 Parents: 20 Children: 50
-Average Fitness Training: 0.46331376053101864
-Average Fitness Test: 0.4541284403669724
-Average Evolution Time: 80.3668 seconds
-Time elapsed: 803.878 seconds
+Average Fitness Training: 0.4632298897509187
+Average Fitness Test: 0.457309105757452
+Average Evolution Time: 58.66655000000001 seconds
+Time elapsed: 1173.612 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 Data-Set: Whitewine
-Processing: Percent per Class
+Processing: Randomhalfsplit
 Number generations: 10000
 Parents: 20 Children: 50
-Average Fitness Training: 0.46540719938728614
-Average Fitness Test: 0.4569826707441386
-Average Evolution Time: 822.9952000000001 seconds
-Time elapsed: 8230.421 seconds
+Average Fitness Training: 0.4651898734177215
+Average Fitness Test: 0.4611065741118825
+Average Evolution Time: 611.98215 seconds
+Time elapsed: 12240.286 seconds
 -----------------------------------------------------------------

@@ -1,70 +1,70 @@
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 1
 Parents: 20 Children: 50
-Average Fitness Training: 0.4491702833801379
-Average Fitness Test: 0.11233435270132519
-Average Evolution Time: 0.10479999999999998 seconds
-Time elapsed: 1.354 seconds
+Average Fitness Training: 0.07392996108949415
+Average Fitness Test: 0.033734939759036145
+Average Evolution Time: 0.0626 seconds
+Time elapsed: 0.802 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 5
 Parents: 20 Children: 50
-Average Fitness Training: 0.4519019657901455
-Average Fitness Test: 0.4011213047910295
-Average Evolution Time: 0.3222 seconds
-Time elapsed: 3.334 seconds
+Average Fitness Training: 0.08910505836575876
+Average Fitness Test: 0.03493975903614458
+Average Evolution Time: 0.346 seconds
+Time elapsed: 3.582 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 10
 Parents: 20 Children: 50
-Average Fitness Training: 0.45343375031912175
-Average Fitness Test: 0.4481141692150866
-Average Evolution Time: 0.6895000000000001 seconds
-Time elapsed: 7.011 seconds
+Average Fitness Training: 0.10428015564202334
+Average Fitness Test: 0.06385542168674699
+Average Evolution Time: 0.9715 seconds
+Time elapsed: 9.921 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 50
 Parents: 20 Children: 50
-Average Fitness Training: 0.4598161858565229
-Average Fitness Test: 0.45005096839959224
-Average Evolution Time: 3.5852000000000004 seconds
-Time elapsed: 35.974 seconds
+Average Fitness Training: 0.16303501945525292
+Average Fitness Test: 0.12771084337349398
+Average Evolution Time: 5.9111 seconds
+Time elapsed: 59.362 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 100
 Parents: 20 Children: 50
-Average Fitness Training: 0.4623946898136329
-Average Fitness Test: 0.45453618756371056
-Average Evolution Time: 7.508 seconds
-Time elapsed: 75.22 seconds
+Average Fitness Training: 0.18015564202334627
+Average Fitness Test: 0.13012048192771086
+Average Evolution Time: 14.0826 seconds
+Time elapsed: 141.131 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 1000
 Parents: 20 Children: 50
-Average Fitness Training: 0.46331376053101864
-Average Fitness Test: 0.4541284403669724
-Average Evolution Time: 80.3668 seconds
-Time elapsed: 803.878 seconds
+Average Fitness Training: 0.2610894941634241
+Average Fitness Test: 0.20120481927710845
+Average Evolution Time: 156.5319 seconds
+Time elapsed: 1565.299 seconds
 -----------------------------------------------------------------
 -----------------------------------------------------------------
-Data-Set: Whitewine
+Data-Set: Leaf
 Processing: Percent per Class
 Number generations: 10000
 Parents: 20 Children: 50
-Average Fitness Training: 0.46540719938728614
-Average Fitness Test: 0.4569826707441386
-Average Evolution Time: 822.9952000000001 seconds
-Time elapsed: 8230.421 seconds
+Average Fitness Training: 0.30817120622568084
+Average Fitness Test: 0.25783132530120484
+Average Evolution Time: 1777.7011000000002 seconds
+Time elapsed: 17777.866 seconds
 -----------------------------------------------------------------
